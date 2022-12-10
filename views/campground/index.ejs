@@ -1,0 +1,41 @@
+<% layout('/layout/boilerplate') %>
+    <div id="map" class="pd-0" style="width: 100%; height: 500px"></div>
+
+    <h2>List of campgrounds: <%=camp.length%> Sites</h2>
+    <div class="card mb-3">
+        <div class="row g-0">
+            <% for(let i of camp) {%>
+                <% if(i.image.length) {%>
+                <div class="col-md-4">
+                    <img class="img-fluid" src="<%=i.image[0].url%>">
+                </div>
+                <%}%>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="/campground/<%=i._id%>"><%=i.title%></a>
+                        </h5>
+                        <p class="card-text">
+                            <%=i.description%>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <%=i.location%>
+                            </small>
+                        </p>
+                        <p class="card-text">
+                            <a class="btn btn-primary" href="/campground/<%=i._id%>">
+                                View <%=i.title%>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <%}%>
+        </div>
+    </div>
+    <script>
+        map_token = '<%-process.env.MAP_TOKEN%>';
+        camm = { features: <%- JSON.stringify(camp) %>}
+    </script>
+    <script src="/javascript/clustermap.js"></script>

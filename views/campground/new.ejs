@@ -1,0 +1,40 @@
+<% layout('/layout/boilerplate') %>
+
+    <div class="row">
+        <h1 class="text-center">New Campground</h1>
+        <div class="col-6 offset-3">
+            <form action="/campground" method="post" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title: </label>
+                    <input class="form-control" type="text" name="camp[title]" id="title" required>
+                    <div class="valid-feedback">Nice!</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location:</label>
+                    <input class="form-control" type="text" name="camp[location]" id="location" required>
+                    <div class="valid-feedback">Nice!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label custom-file">Upload Image(s):</label>
+                    <input class="form-control custom-file-label" type="file" id="image" name="camp[image]" multiple>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="price">$</span>
+                    <input type="text" name="camp[price]" class="form-control" placeholder="0.00" aria-label="price"
+                        aria-describedby="price" required>
+                    <div class="valid-feedback">Nice!</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" name="camp[description]" id="description" cols="30" rows="7"
+                        required></textarea>
+                    <div class="valid-feedback">Nice!</div>
+                </div>
+                <div class="mb-2">
+                    <button class="btn btn-success">Add New</button>
+                </div>
+            </form>
+            <form action="/campground" method="get"><button class="btn btn-secondary mb-3">Back</button>
+        </div>
+    </div>
